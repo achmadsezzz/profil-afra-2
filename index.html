@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil AFRA GHAUS DEDY - Portofolio</title>
+    <style>
+        /* ==========================================
+           1. RESET, VARIABEL & DESAIN DASAR
+           ========================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Color Palette Modern */
+            --primary: #4f46e5;          /* Indigo */
+            --primary-hover: #4338ca;
+            --primary-light: #eef2ff;
+            --text-main: #0f172a;        /* Dark Slate */
+            --text-muted: #475569;       /* Slate Grey */
+            --bg-main: #f8fafc;          /* Soft Off-White */
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+
+        /* ==========================================
+           2. GAYA MOBILE (DASAR / MOBILE-FIRST)
+           ========================================== */
+
+        /* Header & Navigasi */
+        .site-header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 1.5rem;
+            text-align: center;
+        }
+
+        .logo h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .logo h2 span {
+            background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .site-header nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .site-header nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+        }
+
+        .site-header nav a:hover {
+            color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .btn-code {
+            display: none; /* Menyembunyikan kode dekoratif lama agar lebih bersih */
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .hero-avatar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cyber-frame {
+            padding: 0;
+            background: none;
+        }
+
+        .hero-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow-md);
+            border: 4px solid var(--bg-card);
+            outline: 3px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .hero-img:hover {
+            transform: scale(1.03);
+        }
+
+        .status-badge {
+            font-size: 0.75rem;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 0.25rem 0.75rem;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle-tag {
+            display: none;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(1.75rem, 5vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+        }
+
+        .cyber-bio {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+        }
+
+        .cyber-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            min-width: 100px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .m-val {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .m-lbl {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Section Header */
+        .skills-section, .gallery-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #8b5cf6);
+            margin: 0.5rem auto 0;
+            border-radius: var(--radius-full);
+            box-shadow: none;
+        }
+
+        /* Grid Layouts */
+        .skills-grid, .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Cards (Keahlian) */
+        .cyber-card {
+            background-color: var(--bg-card);
+            padding: 1.75rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(79, 70, 229, 0.3);
+            background: var(--bg-card);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-id {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .cyber-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .cyber-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .skill-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #8b5cf6);
+            border-radius: var(--radius-full);
+            box-shadow: none;
+        }
+
+        /* Gallery (Portofolio) */
+        .gallery-item {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            padding: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+            filter: none;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: none;
+        }
+
+        .img-overlay-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.75);
+            border: none;
+            color: #ffffff;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        .gallery-item figcaption {
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: center;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .sys-ver {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ==========================================
+           3. TABLET (@media min-width: 768px)
+           ========================================== */
+        @media (min-width: 768px) {
+            .site-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 3rem;
+            }
+
+            .logo {
+                align-items: flex-start;
+            }
+
+            .site-header nav {
+                flex-direction: row;
+                gap: 0.5rem;
+                margin-top: 0;
+            }
+
+            .hero {
+                flex-direction: row;
+                text-align: left;
+                padding: 3rem 0;
+                gap: 3rem;
+            }
+
+            .hero-avatar-wrapper {
+                flex-shrink: 0;
+            }
+
+            .hero-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cyber-metrics {
+                justify-content: flex-start;
+            }
+
+            .skills-grid, .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ==========================================
+           4. DESKTOP (@media min-width: 1024px)
+           ========================================== */
+        @media (min-width: 1024px) {
+            .skills-grid, .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ==========================================
+           5. MODE GELAP OTOMATIS (Sistem)
+           ========================================== */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-main: #0b0f19;
+                --bg-card: #151c2c;
+                --text-main: #f1f5f9;
+                --text-muted: #94a3b8;
+                --border-color: #1e293b;
+                --primary-light: rgba(79, 70, 229, 0.15);
+            }
+
+            .site-header {
+                background-color: rgba(11, 15, 25, 0.85);
+            }
+
+            .site-footer {
+                background-color: #06080e;
+            }
+
+            .metric-item {
+                background: var(--bg-card);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigasi -->
+    <header class="site-header">
+        <div class="logo">
+            <h2>A<span>fra</span> Ghaus Dedy</h2>
+        </div>
+        <nav>
+            <a href="#tentang">Tentang</a>
+            <a href="#keahlian">Keahlian</a>
+            <a href="#portofolio">Portofolio</a>
+        </nav>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="container">
+        
+        <!-- Hero / Perkenalan -->
+        <section id="tentang" class="hero">
+            <div class="hero-avatar-wrapper">
+                <div class="cyber-frame">
+                    <img src="img/2. AFRA GHAUS DEDYFRICIO_.jpg" alt="Foto Profil Afra Ghaus Dedy" class="hero-img">
+                </div>
+                <div class="status-badge">CLASS: RPL 1</div>
+            </div>
+            
+            <div class="hero-text">
+                <h1>AFRA GHAUS DEDY</h1>
+                <p class="cyber-bio">
+                    Siswa Rekayasa Perangkat Lunak di SMKS Brantas Karangkates. Berfokus pada arsitektur web modern, antarmuka yang bersih, serta pengembangan pengalaman pengguna yang responsif di seluruh platform.
+                </p>
+                <div class="cyber-metrics">
+                    <div class="metric-item">
+                        <span class="m-val">100%</span>
+                        <span class="m-lbl">RESPONSIF</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="m-val">CSS3</span>
+                        <span class="m-lbl">GRID & FLEX</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keahlian -->
+        <section id="keahlian" class="skills-section">
+            <h2 class="section-title">Keahlian Saya</h2>
+            <div class="skills-grid">
+                <article class="cyber-card">
+                    <div class="card-header">
+                        <span class="card-id">[01]</span>
+                        <h3>HTML5</h3>
+                    </div>
+                    <p>Menyusun struktur dasar halaman web yang terstruktur, rapi, dan mudah diindeks oleh sistem mesin pencari.</p>
+                    <div class="skill-bar"><div class="fill" style="width: 90%;"></div></div>
+                </article>
+
+                <article class="cyber-card">
+                    <div class="card-header">
+                        <span class="card-id">[02]</span>
+                        <h3>CSS3 & Responsif</h3>
+                    </div>
+                    <p>Implementasi sistem layout Flexbox, CSS Grid, Media Query, dan arsitektur Mobile-First modern.</p>
+                    <div class="skill-bar"><div class="fill" style="width: 85%;"></div></div>
+                </article>
+
+                <article class="cyber-card">
+                    <div class="card-header">
+                        <span class="card-id">[03]</span>
+                        <h3>JavaScript</h3>
+                    </div>
+                    <p>Pengembangan logika interaktif dan penanganan elemen dinamis pada antarmuka pengguna.</p>
+                    <div class="skill-bar"><div class="fill" style="width: 75%;"></div></div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Portofolio / Galeri -->
+        <section id="portofolio" class="gallery-section">
+            <h2 class="section-title">Portofolio</h2>
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <div class="img-wrapper">
+                        <img src="img/game ulo.png" alt="Proyek 1">
+                        <span class="img-overlay-tag">PRJ_01</span>
+                    </div>
+                    <figcaption>Mini Project Snake</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <div class="img-wrapper">
+                        <img src="img/AFRA.png" alt="Proyek 2">
+                        <span class="img-overlay-tag">PRJ_02</span>
+                    </div>
+                    <figcaption>Formulir Siswa</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <div class="img-wrapper">
+                        <img src="img/afr 01.png" alt="Proyek 3">
+                        <span class="img-overlay-tag">PRJ_03</span>
+                    </div>
+                    <figcaption>Watermark Studio</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 AFRA GHAUS DEDY // SMKS BRANTAS KARANGKATES. All rights reserved.</p>
+            <span class="sys-ver">@portofolioafra</span>
+        </div>
+    </footer>
+
+</body>
+</html>
